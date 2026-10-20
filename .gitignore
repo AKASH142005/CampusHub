@@ -1,3 +1,7 @@
+.catalystrc
+backend/app-config.json
+
+
 # Dependencies
 node_modules/
 .pnp

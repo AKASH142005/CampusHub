@@ -32,10 +32,10 @@ let nextIds = {
 
 export async function initDatabase() {
   const dbConfig = {
-    host: process.env.DB_HOST || 'localhost',
+    host: process.env.DB_HOST,
     port: parseInt(process.env.DB_PORT || '3306', 10),
-    user: process.env.DB_USER || 'root',
-    password: process.env.DB_PASSWORD || 'root',
+    user: process.env.DB_USER,
+    password: process.env.DB_PASSWORD,
     multipleStatements: true,
     connectTimeout: 3000
   };
@@ -43,7 +43,7 @@ export async function initDatabase() {
   try {
     // Attempt initial connection to MySQL server
     const tempConnection = await mysql.createConnection(dbConfig);
-    const dbName = process.env.DB_NAME || 'campushub_db';
+    const dbName = process.env.DB_NAME;
 
     await tempConnection.query(`CREATE DATABASE IF NOT EXISTS \`${dbName}\`;`);
     await tempConnection.end();
@@ -310,7 +310,7 @@ export const db = {
         await pool.query('DELETE FROM event_rsvps WHERE event_id = ? AND user_id = ?', [eventId, userId]);
         return { isRSVPed: false };
       } else {
-        await pool.query('INSERT INTO event_rsvps (event_id, user_id, status) VALUES (?, ?, "CONFIRMED")', [eventId, userId]);
+        await pool.query("INSERT INTO event_rsvps (event_id, user_id, status) VALUES (?, ?, 'CONFIRMED')", [eventId, userId]);
         return { isRSVPed: true };
       }
     }
@@ -334,7 +334,7 @@ export const db = {
   async getUserRSVPs(userId) {
     userId = Number(userId);
     if (isUsingMySQL) {
-      const [rows] = await pool.query('SELECT event_id FROM event_rsvps WHERE user_id = ? AND status = "CONFIRMED"', [userId]);
+      const [rows] = await pool.query("SELECT event_id FROM event_rsvps WHERE user_id = ? AND status = 'CONFIRMED'", [userId]);
       return rows.map(r => r.event_id);
     }
     return memoryStore.event_rsvps.filter(r => r.user_id === userId && r.status === 'CONFIRMED').map(r => r.event_id);
@@ -391,7 +391,7 @@ export const db = {
       const [[users]] = await pool.query('SELECT COUNT(*) as total_users FROM users');
       const [[events]] = await pool.query('SELECT COUNT(*) as total_events FROM events');
       const [[notices]] = await pool.query('SELECT COUNT(*) as total_notices FROM notices');
-      const [[items]] = await pool.query('SELECT COUNT(*) as total_items FROM marketplace_items WHERE status = "AVAILABLE"');
+      const [[items]] = await pool.query("SELECT COUNT(*) as total_items FROM marketplace_items WHERE status = 'AVAILABLE'");
       return {
         totalUsers: users.total_users,
         totalEvents: events.total_events,

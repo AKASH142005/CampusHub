@@ -7,7 +7,7 @@ export default defineConfig({
     port: 3000,
     proxy: {
       '/api': {
-        target: 'http://localhost:5000',
+        target: 'https://backend-50047021512.development.catalystappsail.in',
         changeOrigin: true
       }
     }

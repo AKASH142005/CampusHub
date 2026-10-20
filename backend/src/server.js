@@ -24,6 +24,17 @@ await fastify.register(cors, {
   credentials: true
 });
 
+// Allow empty body with application/json without throwing FST_ERR_CTP_EMPTY_JSON_BODY
+fastify.addContentTypeParser('application/json', { parseAs: 'string' }, function (req, body, done) {
+  try {
+    const json = body && body.trim() ? JSON.parse(body) : {};
+    done(null, json);
+  } catch (err) {
+    err.statusCode = 400;
+    done(err, undefined);
+  }
+});
+
 await fastify.register(jwt, {
   secret: process.env.JWT_SECRET || 'campushub_secret_key_default_2026'
 });
@@ -48,13 +59,17 @@ await fastify.register(statsRoutes, { prefix: '/api/stats' });
 
 const start = async () => {
   try {
-    await initDatabase();
-    const port = parseInt(process.env.PORT || '5000', 10);
+    const port = parseInt(process.env.X_ZOHO_CATALYST_LISTEN_PORT || process.env.PORT || '9000', 10);
     const host = process.env.HOST || '0.0.0.0';
 
     await fastify.listen({ port, host });
-    console.log(`\n🚀 CampusHub Fastify Server is running at http://localhost:${port}`);
-    console.log(`📡 Health Check: http://localhost:${port}/api/health\n`);
+    console.log(`\n🚀 CampusHub Fastify Server is running at http://${host}:${port}`);
+    console.log(`📡 Health Check: http://${host}:${port}/api/health\n`);
+
+    // Connect to database in the background without blocking the container listen port
+    initDatabase().catch(err => {
+      console.error('[Database Init Error]', err);
+    });
   } catch (err) {
     fastify.log.error(err);
     process.exit(1);

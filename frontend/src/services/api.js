@@ -79,7 +79,7 @@ export const eventsAPI = {
     return res.data;
   },
   toggleRSVP: async (eventId) => {
-    const res = await api.post(`/events/${eventId}/rsvp`);
+    const res = await api.post(`/events/${eventId}/rsvp`, {});
     return res.data;
   }
 };
