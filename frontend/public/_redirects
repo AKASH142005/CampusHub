@@ -1,0 +1,2 @@
+/api/*  https://backend-50047021512.development.catalystappsail.in/api/:splat  200!
+/*      /index.html                                                            200
