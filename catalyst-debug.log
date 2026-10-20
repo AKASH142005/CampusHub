@@ -11,3 +11,15 @@
 [debug] [2026-10-20T10:14:48.347Z] : > command requires scopes: ["ZohoCatalyst.projects.ALL","ZohoCatalyst.functions.ALL","ZohoCatalyst.webapp.ALL","ZohoCatalyst.appsail.Update"]
 [debug] [2026-10-20T10:14:48.462Z] : >>>> HTTP REQUEST : GET https://api.catalyst.zoho.in/baas/v1/project/72716000000050026 
 
+[debug] [2026-10-20T10:14:49.073Z] : <<<< HTTP RESPONSE : 200
+Response Headers: {"server":"ZGS","date":"Tue, 20 Oct 2026 10:14:48 GMT","content-type":"application/vnd.catalyst.v2+json","transfer-encoding":"chunked","connection":"keep-alive","x-content-type-options":"nosniff","cache-control":"private,no-cache,no-store,max-age=0,must-revalidate","pragma":"no-cache","expires":"Thu, 01 Jan 1970 00:00:00 GMT","x-frame-options":"DENY","strict-transport-security":"max-age=64072000; includeSubDomains; preload"}
+
+[debug] [2026-10-20T10:14:49.078Z] : >>>> HTTP REQUEST : GET https://api.catalyst.zoho.in/baas/v1/project/72716000000050026/environment 
+
+[debug] [2026-10-20T10:14:49.173Z] : <<<< HTTP RESPONSE : 200
+Response Headers: {"server":"ZGS","date":"Tue, 20 Oct 2026 10:14:48 GMT","content-type":"application/vnd.catalyst.v2+json","transfer-encoding":"chunked","connection":"keep-alive","x-content-type-options":"nosniff","cache-control":"private,no-cache,no-store,max-age=0,must-revalidate","pragma":"no-cache","expires":"Thu, 01 Jan 1970 00:00:00 GMT","x-frame-options":"DENY","strict-transport-security":"max-age=64072000; includeSubDomains; preload"}
+
+[debug] [2026-10-20T10:14:50.091Z] : Compressing archive "Archive"...
+[debug] [2026-10-20T10:14:51.953Z] : Compressed archive "Archive" (4269387 bytes) in 1862ms
+[debug] [2026-10-20T10:14:51.967Z] : >>>> HTTP REQUEST : PUT https://api.catalyst.zoho.in/baas/v1/project/72716000000050026/appsail/upsert 
+
