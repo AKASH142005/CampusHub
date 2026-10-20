@@ -1,8 +1,7 @@
 [build]
-  base = "frontend"
-  publish = "dist"
-  command = "npm run build"
-
+  command = "npm run build:frontend"
+  publish = "frontend/dist"
+  
 [[redirects]]
   from = "/api/*"
   to = "https://backend-50047021512.development.catalystappsail.in/api/:splat"
