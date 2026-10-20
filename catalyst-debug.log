@@ -1,0 +1,13 @@
+[debug] [2026-10-20T10:14:46.364Z] : 
+[debug] [2026-10-20T10:14:46.366Z] : ----------------------------------------------------------------------
+[debug] [2026-10-20T10:14:46.366Z] : Command:      C:\Program Files\nodejs\node.exe C:\Users\Akash\AppData\Roaming\npm\node_modules\zcatalyst-cli\lib\bin\catalyst.js deploy
+[debug] [2026-10-20T10:14:46.366Z] : CLI Version:  1.28.0
+[debug] [2026-10-20T10:14:46.366Z] : Platform:     win32
+[debug] [2026-10-20T10:14:46.367Z] : Node Version: v24.21.0
+[debug] [2026-10-20T10:14:46.367Z] : Time:         Tue Oct 20 2026 15:44:46 GMT+0530 (India Standard Time)
+[debug] [2026-10-20T10:14:46.367Z] : ----------------------------------------------------------------------
+[debug] [2026-10-20T10:14:46.367Z] : 
+[debug] [2026-10-20T10:14:48.345Z] : > authorizing via signed-in user option
+[debug] [2026-10-20T10:14:48.347Z] : > command requires scopes: ["ZohoCatalyst.projects.ALL","ZohoCatalyst.functions.ALL","ZohoCatalyst.webapp.ALL","ZohoCatalyst.appsail.Update"]
+[debug] [2026-10-20T10:14:48.462Z] : >>>> HTTP REQUEST : GET https://api.catalyst.zoho.in/baas/v1/project/72716000000050026 
+
